@@ -40,7 +40,7 @@ export default function App() {
 
       {/* Income Input */}
       <div className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md">
-        <label className="block text-lg font-medium mb-2">Enter your annual income:</label>
+        <label className="block text-lg font-medium mb-2">Enter your annual income in 2023:</label>
         <input
           type="number"
           className="w-full border rounded-lg px-4 py-2"
@@ -60,7 +60,7 @@ export default function App() {
       <div className="bg-green-100 p-6 rounded-2xl shadow-md w-full max-w-md mt-6">
         <h2 className="text-xl font-semibold mb-2">Congratulations!</h2>
         <p className="text-lg">
-          You spent <span className="font-bold">${funNumber.toLocaleString()}</span> on aiding Israel's genocidal government!
+          You spent <span className="font-bold">${funNumber.toLocaleString()}</span> in 2024 on aiding Israel's genocidal government!
         </p>
       </div>
     </div>
