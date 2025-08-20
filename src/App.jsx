@@ -36,11 +36,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
-      <h1 className="text-3xl font-bold mb-6">Income Playground</h1>
+      <h1 className="text-3xl font-bold mb-6">Income Tax Genocide Calculator</h1>
 
       {/* Income Input */}
       <div className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md">
-        <label className="block text-lg font-medium mb-2">Enter your annual income in 2023:</label>
+        <label className="block text-lg font-medium mb-2">Enter your annual income in 2023: </label>
         <input
           type="number"
           className="w-full border rounded-lg px-4 py-2"
