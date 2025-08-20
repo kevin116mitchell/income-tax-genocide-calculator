@@ -60,7 +60,7 @@ export default function App() {
       <div className="bg-green-100 p-6 rounded-2xl shadow-md w-full max-w-md mt-6">
         <h2 className="text-xl font-semibold mb-2">Congratulations!</h2>
         <p className="text-lg">
-          You spent <span className="font-bold">${funNumber.toLocaleString()}</span> on aiding Israel's genocideal government!
+          You spent <span className="font-bold">${funNumber.toLocaleString()}</span> on aiding Israel's genocidal government!
         </p>
       </div>
     </div>
