@@ -16,6 +16,15 @@ export default function App() {
     { rate: 0.37, cap: Infinity },
   ]
 
+  // Add this near the top of App.jsx
+  const weaponCosts = [
+  { name: 'F-15IA multi-role fighter aircraft', manufacturer: 'Boeing Corporation', cost: 208_000_000 },
+  { name: 'AIM-120C-8 Advanced Medium Range Air-to-Air Missile (AMRAAM)', manufacturer: 'RTX Corporation', cost: 3_416_666 },
+  { name: '120mm tank cartridges', manufacturer: 'General Dynamics', cost: 23_644 },
+  { name: 'M933A1 120mm High Explosive Mortar Cartridges', manufacturer: 'General Dynamics', cost: 1_222 },
+  { name: 'AGM-114 Hellfire Missile', manufacturer: 'Lockheed Martin', cost: 150_000 },
+]
+
   const calculateFederalTaxes = (income) => {
     let tax = 0
     let lastCap = 0
@@ -90,6 +99,24 @@ export default function App() {
         </p>
         <p className="mt-2 text-xl">{reactionText}</p>
       </div>
+
+    {/* Weapon Cost Card */}
+    <div className="bg-white/60 backdrop-blur-md p-6 rounded-2xl shadow-lg w-full max-w-md mt-6 hover:shadow-2xl transition-shadow duration-300">
+      <h2 className="text-2xl font-semibold mb-4">What Your Contribution Could Buy</h2>
+      <ul className="list-disc list-inside space-y-1 text-gray-800">
+        {weaponCosts.map((weapon) => {
+          const units = funNumber / weapon.cost
+          return (
+            <li key={weapon.name}>
+              {units.toFixed(7)} {weapon.name} - <span className="italic">{weapon.manufacturer}</span>
+            </li>
+          )
+        })}
+      </ul>
     </div>
+
+    </div>
+
+     
   )
 }
