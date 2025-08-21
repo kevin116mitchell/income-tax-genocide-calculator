@@ -1,7 +1,9 @@
+// App.jsx
 import { useState } from 'react'
+import CountUp from 'react-countup'
 
 export default function App() {
-  const [income, setIncome] = useState('')
+  const [income, setIncome] = useState(60000)
 
   // 2024 US Federal Tax Brackets (Single filer)
   const brackets = [
@@ -17,7 +19,6 @@ export default function App() {
   const calculateFederalTaxes = (income) => {
     let tax = 0
     let lastCap = 0
-
     for (const bracket of brackets) {
       if (income > bracket.cap) {
         tax += (bracket.cap - lastCap) * bracket.rate
@@ -34,34 +35,60 @@ export default function App() {
   const federalTaxes = calculateFederalTaxes(annualIncome)
   const funNumber = federalTaxes * 0.00411817
 
-  return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
-      <h1 className="text-3xl font-bold mb-6">Income Tax Genocide Calculator</h1>
+  const reactionText =
+    annualIncome > 500000
+      ? '💸 Big spender alert!'
+      : annualIncome > 150000
+      ? '📈 Nice income!'
+      : '💪 Keep grinding!'
 
-      {/* Income Input */}
-      <div className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md">
-        <label className="block text-lg font-medium mb-2">Enter your annual income in 2023: </label>
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-purple-400 via-pink-300 to-yellow-200">
+      <h1 className="text-4xl md:text-5xl font-extrabold mb-8 text-white drop-shadow-lg text-center">
+        Income Tax Genocide Calculator
+      </h1>
+
+      {/* Income Input Card */}
+      <div className="bg-white/60 backdrop-blur-md p-6 rounded-2xl shadow-lg w-full max-w-md hover:shadow-2xl transition-shadow duration-300">
+        <label className="block text-lg font-semibold mb-2">Enter your annual income in 2024:</label>
         <input
           type="number"
-          className="w-full border rounded-lg px-4 py-2"
+          className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
           value={income}
           onChange={(e) => setIncome(e.target.value)}
-          placeholder="e.g. 60000"
+          min={0}
         />
+        <input
+          type="range"
+          min={0}
+          max={1000000}
+          step={1000}
+          value={income}
+          onChange={(e) => setIncome(e.target.value)}
+          className="w-full accent-purple-500"
+        />
+        <p className="mt-2 text-gray-700 font-medium">Income: ${annualIncome.toLocaleString()}</p>
       </div>
 
-      {/* Tax Output */}
-      <div className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md mt-6">
-        <h2 className="text-xl font-semibold mb-2">Estimated Federal Taxes</h2>
-        <p className="text-lg">${federalTaxes.toLocaleString()}</p>
-      </div>
-
-      {/* Fun Fact */}
-      <div className="bg-green-100 p-6 rounded-2xl shadow-md w-full max-w-md mt-6">
-        <h2 className="text-xl font-semibold mb-2">Congratulations!</h2>
-        <p className="text-lg">
-          You spent <span className="font-bold">${funNumber.toLocaleString()}</span> in 2024 on aiding Israel's genocidal government!
+      {/* Tax Output Card */}
+      <div className="bg-white/60 backdrop-blur-md p-6 rounded-2xl shadow-lg w-full max-w-md mt-6 hover:shadow-2xl transition-shadow duration-300">
+        <h2 className="text-2xl font-semibold mb-2">Estimated Federal Taxes</h2>
+        <p className="text-xl font-bold text-purple-700">
+          <CountUp end={federalTaxes} duration={1.5} separator="," prefix="$" />
         </p>
+      </div>
+
+      {/* Fun Fact Card */}
+      <div className="bg-green-100/70 backdrop-blur-md p-6 rounded-2xl shadow-lg w-full max-w-md mt-6 hover:shadow-2xl transition-shadow duration-300">
+        <h2 className="text-2xl font-semibold mb-2">Congratulations!</h2>
+        <p className="text-lg">
+          You spent{' '}
+          <span className="font-bold text-green-800">
+            <CountUp end={funNumber} duration={1.5} separator="," prefix="$" />
+          </span>{' '}
+          in 2024 on aiding Israel's genocidal government!
+        </p>
+        <p className="mt-2 text-xl">{reactionText}</p>
       </div>
     </div>
   )
