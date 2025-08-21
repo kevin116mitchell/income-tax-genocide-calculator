@@ -26,6 +26,13 @@ export default function App() {
   { name: 'AGM-114 Hellfire Missile', manufacturer: 'Lockheed Martin', cost: 150_000 },
 ]
 
+const aidOrganizations = [
+  { name: 'UNICEF ', website: 'https://help.unicef.org/ob/donate-to-children' },
+  { name: 'Palestine Children\'s Relief Fund', website: 'https://www.pcrf.net/' },
+  { name: 'Direct to Families in Gaza Option 1', website: 'https://gazafunds.com/' },
+  { name: 'Direct to Families in Gaza Option 2', website: 'https://lifeline4gaza.com/' },
+]
+
   const calculateFederalTaxes = (income) => {
     let tax = 0
     let lastCap = 0
@@ -116,8 +123,24 @@ export default function App() {
       </ul>
     </div>
 
+    {/* Aid Organizations Card */}
+    <div className="bg-white/60 backdrop-blur-md p-6 rounded-2xl shadow-lg w-full max-w-md mt-6 hover:shadow-2xl transition-shadow duration-300">
+      <h2 className="text-2xl font-semibold mb-4">How You Can Help...</h2>
+      <p className="text-lg">
+          Consider donating at least as much as you gave to the IDF
+      </p>
+      <ul className="list-disc list-inside space-y-1 text-gray-800">
+        {aidOrganizations.map((org) => {
+          return (
+            <li key={org.name}>
+              {org.name.padEnd(10, '\u00A0')} | <span className="italic">{org.website}</span>
+            </li>
+          )
+        })}
+      </ul>
     </div>
 
-     
+    </div>
+
   )
 }
