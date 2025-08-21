@@ -18,12 +18,12 @@ export default function App() {
 
   // Add this near the top of App.jsx
   const weaponCosts = [
-  { name: '5.56x45mm NATO Rifle Cartridges                             ', manufacturer: ' | Winchester Ammunition', cost: 1.20 },
-  { name: 'F-15IA Multi-Role Fighter Aircraft                          ', manufacturer: ' | Boeing Corporation', cost: 208_000_000 },
-  { name: 'AIM-120C-8 Advanced Medium Range Air-to-Air Missile (AMRAAM)', manufacturer: ' | RTX Corporation', cost: 3_416_666 },
-  { name: '120mm Tank Cartridges                                       ', manufacturer: ' | General Dynamics     ', cost: 23_644 },
-  { name: 'M933A1 120mm High Explosive Mortar Cartridges               ', manufacturer: ' | General Dynamics', cost: 1_222 },
-  { name: 'AGM-114 Hellfire Missile                                    ', manufacturer: ' | Lockheed Martin', cost: 150_000 },
+  { name: '5.56x45mm NATO Rifle Cartridges', manufacturer: 'Winchester Ammunition', cost: 1.20 },
+  { name: 'F-15IA Multi-Role Fighter Aircraft', manufacturer: 'Boeing Corporation', cost: 208_000_000 },
+  { name: 'AIM-120C-8 Advanced Medium Range Air-to-Air Missile (AMRAAM)', manufacturer: 'RTX Corporation', cost: 3_416_666 },
+  { name: '120mm Tank Cartridges', manufacturer: 'General Dynamics     ', cost: 23_644 },
+  { name: 'M933A1 120mm High Explosive Mortar Cartridges', manufacturer: 'General Dynamics', cost: 1_222 },
+  { name: 'AGM-114 Hellfire Missile', manufacturer: 'Lockheed Martin', cost: 150_000 },
 ]
 
   const calculateFederalTaxes = (income) => {
@@ -109,7 +109,7 @@ export default function App() {
           const units = funNumber / weapon.cost
           return (
             <li key={weapon.name}>
-              {units.toFixed(7)} {weapon.name} - <span className="italic">{weapon.manufacturer}</span>
+              {units.toFixed(7)} | {weapon.name.padEnd(65)} | <span className="italic">{weapon.manufacturer}</span>
             </li>
           )
         })}
