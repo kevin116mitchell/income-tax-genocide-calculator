@@ -108,8 +108,8 @@ export default function App() {
         {weaponCosts.map((weapon) => {
           const units = funNumber / weapon.cost
           return (
-            <li key={weapon.name} style={{ whiteSpace: 'pre' }}>
-              {units.toFixed(7)} | {weapon.name.padEnd(10)} | <span className="italic">{weapon.manufacturer}</span>
+            <li key={weapon.name}>
+              {units.toFixed(7)} {weapon.name.padEnd(10, '\u00A0')} | <span className="italic">{weapon.manufacturer}</span>
             </li>
           )
         })}
