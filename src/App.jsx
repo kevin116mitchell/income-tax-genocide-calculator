@@ -133,7 +133,14 @@ const aidOrganizations = [
         {aidOrganizations.map((org) => {
           return (
             <li key={org.name}>
-              {org.name.padEnd(10, '\u00A0')} | <span className="italic">{org.website}</span>
+              {org.name} | <a 
+                href={org.website} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="italic text-blue-600 hover:text-blue-800 underline"
+              >
+                {org.website}
+              </a>
             </li>
           )
         })}
